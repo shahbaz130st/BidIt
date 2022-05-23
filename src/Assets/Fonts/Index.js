@@ -6,7 +6,7 @@ const font_android = {
     Bold: 'Poppins-Bold',
     SemiBold: 'Poppins-SemiBold',
     Light: 'Poppins-Light',
-    Retionale: 'Retionale-Regular'
+    Rationale: 'Rationale-Regular'
 }
 const font_ios = {
     Regular: 'Poppins-Regular',
@@ -14,7 +14,7 @@ const font_ios = {
     Bold: 'Poppins-Bold',
     SemiBold: 'Poppins-SemiBold',
     Light: 'Poppins-Light',
-    Retionale: 'Retionale-Regular'
+    Rationale: 'Rationale-Regular'
 
 }
 const Fonts = Platform.select({

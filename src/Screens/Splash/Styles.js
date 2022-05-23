@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
         resizeMode: 'contain'
     },
     projectName: {
-        fontSize: 48,
-        fontFamily: Fonts.Regular,
+        fontSize: 50,
+        fontFamily: Fonts.Rationale,
         color: colors.textPrimary,
         marginTop:30
     }

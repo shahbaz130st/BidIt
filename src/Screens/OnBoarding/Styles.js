@@ -58,8 +58,8 @@ const styles = StyleSheet.create({
     },
 
     projectName: {
-        fontSize: 48,
-        fontFamily: Fonts.Regular,
+        fontSize: 50,
+        fontFamily: Fonts.Rationale,
         color: colors.textPrimary,
     },
     DummyText: {
@@ -88,15 +88,15 @@ const styles = StyleSheet.create({
     },
     login: {
         fontSize: 12,
-        fontFamily: Fonts.Regular,
+        fontFamily: Fonts.Medium,
         color: colors.textSecondary,
         marginTop: 15
     },
     Btn: {
-        marginTop: 50
+        marginTop: 60
     },
     label: {
-        fontSize: 15,
+        fontSize: 17,
         fontFamily: Fonts.Regular,
         color: colors.white
     }

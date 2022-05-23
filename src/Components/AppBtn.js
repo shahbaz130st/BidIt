@@ -12,27 +12,19 @@ const AppButton = (props) => {
     return (
 
         <TouchableOpacity
+            onPress={onPress}
             activeOpacity={0.4}
             style={[styles.mainContainer, style]} >
             <LinearGradient
                 onPress={() => alert('hi')}
                 colors={[colors.gradientOne, colors.gradientTwo]}
-                start={{ x: 1, y: 0 }} end={{ x: 0, y: 0 }}
-                style={{width:'100%', height:'100%', alignItems:'center',justifyContent:'center',borderRadius:10}}>
+                start={{ x: 0.9, y: 0.1 }} end={{ x: 0, y: 0 }}
+                // useAngle={true}
+                // angle={45}
+                style={{ width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', borderRadius: 10 }}>
                 <Text style={labelStyle}>{label}</Text>
             </LinearGradient>
         </TouchableOpacity>
-
-        // <TouchableOpacity
-        //     activeOpacity={0.5}
-        //     style={[styles.mainContainer, style]}
-        //     onPress={onPress}
-        //     disabled={disabled}>
-        //     <View style={{flexDirection:'row', alignItems:'center'}}>
-        //     <Image source={image} style={styles.btnImage} />
-        //     <Text style={[styles.btnText, labelStyle]}>{label}</Text>
-        //     </View>
-        // </TouchableOpacity>
 
 
     )

@@ -27,11 +27,8 @@ const OnBoarding = ({ navigation }) => {
                 style={styles.rightEclipse}
             />
 
-            {/* <Text style={styles.projectName}>{Strings.Project}</Text> */}
-            <Image
-                source={Images.name}
-                style={styles.name}
-            />
+            <Text style={styles.projectName}>{Strings.Project}</Text>
+           
             <Text style={styles.DummyText}>{Strings.Dummy_One}</Text>
 
 
@@ -80,9 +77,10 @@ const OnBoarding = ({ navigation }) => {
             </View>
 
             <AppButton
-                label={"CANCEL"}
+                label={"Next"}
                 labelStyle={styles.label}
                 style={styles.Btn}
+                onPress={()=>navigation.navigate('AuthStack')}
             />
 
             {/* </ImageBackground> */}

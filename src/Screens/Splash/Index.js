@@ -34,6 +34,12 @@ const Splash = ({ navigation }) => {
 
     // }, [])
 
+    useEffect(() => {
+        setTimeout(() => {
+            navigation.navigate('OnBoarding')
+        }, 1000);
+    }, [])
+
     return (
         <View style={styles.mainContainer}>
             <Image
@@ -44,15 +50,15 @@ const Splash = ({ navigation }) => {
                 source={Images.logo}
                 style={styles.logo}
             />
-            <Pressable onPress={() => navigation.navigate('OnBoarding')}>
+            {/* <Pressable onPress={() => navigation.navigate('OnBoarding')}>
                 <Image
                     source={Images.name}
                     style={styles.name}
                 />
-            </Pressable>
-            {/* <Pressable onPress={()=>navigation.navigate('OnBoarding')}>
-                <Text style={styles.projectName}>{Strings.Project}</Text>
             </Pressable> */}
+            <Pressable onPress={() => navigation.navigate('OnBoarding')}>
+                <Text style={styles.projectName}>{Strings.Project}</Text>
+            </Pressable>
 
             <Image
                 source={Images.LeftEllipse}

@@ -6,143 +6,139 @@ import {
   Image,
   TextInput,
   Pressable,
+  TouchableOpacityBase,
+  TouchableOpacity,
 } from 'react-native';
 // ------------------------------------------
 import colors from '../Assets/Colors/Index';
+import Fonts from '../Assets/Fonts/Index';
 
 const InputField = props => {
   const {
-    label,
     leftIcon,
-    iconStyle,
+    rightIcon,
     placeholder,
     value,
     onChangeText,
+    isRightIcon,
     multiLine,
     textAlignVertical,
     password,
-    editable,
     autoCapitalize,
     labelStyle,
-    rightIcon,
-    isLeftIcon,
     keyBoardType,
-    rightIconOnPress,
-    noIcon,
     returnKeyType,
     onSubmitEditing,
     fieldRef,
-    maxLength
+    maxLength,
+    customStyle,
+    rightIconOnPress
   } = props;
-  return isLeftIcon ? (
-    <View style={[styles.mainContainer]}>
-      <Text style={[styles.label]}>{label}</Text>
-      <View style={[styles.secondaryContainer, { paddingHorizontal: 15 }]}>
-        <Image source={leftIcon} style={[iconStyle, { tintColor: colors.primary }]} />
-        <TextInput
-          style={{
-            width: rightIcon ? '88%' : '100%',
-            color: colors.black,
-            // marginLeft:5
-          }}
-          placeholder={placeholder}
-          value={value}
-          onChangeText={onChangeText}
-          secureTextEntry={password}
-          placeholderTextColor={'gray'}
-          autoCapitalize={autoCapitalize}
-          keyboardType={keyBoardType}
-          returnKeyType={returnKeyType}
-          onSubmitEditing={onSubmitEditing}
-          ref={fieldRef}
-          blurOnSubmit={false}
-        />
 
-        {rightIcon && (
-          <Pressable onPress={rightIconOnPress}>
-            <Image source={rightIcon} style={[styles.rightStyle]} />
-          </Pressable>
-        )}
-      </View>
-    </View>
-  ) :(
-    <View style={[styles.mainContainer]}>
-      <Text style={[styles.label, labelStyle]}>{label}</Text>
-      <View style={[styles.secondaryContainer]}>
-        <TextInput
-          style={[
-            {
-              color: colors.black,
-              width: rightIcon ? '90%' : '100%',
-              paddingHorizontal: 15,
-            },
-          ]}
-          placeholder={placeholder}
-          value={value}
-          onChangeText={onChangeText}
-          multiline={multiLine}
-          textAlignVertical={textAlignVertical}
-          secureTextEntry={password}
-          placeholderTextColor={'gray'}
-          editable={editable}
-          autoCapitalize={autoCapitalize}
-          keyboardType={keyBoardType}
-          returnKeyType={returnKeyType}
-          onSubmitEditing={onSubmitEditing}
-          ref={fieldRef}
-          blurOnSubmit={false}
-          maxLength={maxLength}
-        />
+  return (
+    <View style={[styles.mainContainer, customStyle,]}>
 
-        {rightIcon && (
-          <Pressable onPress={rightIconOnPress}>
-            <Image
-              resizeMode="contain"
-              source={rightIcon}
-              style={[styles.rightStyle]}
-            />
-          </Pressable>
-        )}
-      </View>
+      {
+        isRightIcon ?
+          <>
+            <View style={styles.icon}>
+              <Image source={leftIcon} style={styles.leftIconStyle} />
+            </View>
+
+            <View style={[styles.input, { width: '70%'}]}>
+              <TextInput
+                style={{ fontSize: 14, fontFamily: Fonts.Light }}
+                placeholder={placeholder}
+                value={value}
+                onChangeText={onChangeText}
+                secureTextEntry={password}
+                placeholderTextColor={'gray'}
+                autoCapitalize={autoCapitalize}
+                keyboardType={keyBoardType}
+                returnKeyType={returnKeyType}
+                onSubmitEditing={onSubmitEditing}
+                ref={fieldRef}
+                blurOnSubmit={false}
+              />
+            </View>
+            <View style={styles.passwordIcon}>
+              <TouchableOpacity
+                onPress={rightIconOnPress}
+                activeOpacity={0.4}
+              >
+                <Image source={rightIcon} style={styles.rightIconStyle} />
+              </TouchableOpacity>
+            </View>
+          </>
+          :
+          <>
+            <View style={styles.icon}>
+              <Image source={leftIcon} style={styles.leftIconStyle} />
+            </View>
+
+            <View style={styles.input}>
+              <TextInput
+                style={{ fontSize: 14, fontFamily: Fonts.Light }}
+                placeholder={placeholder}
+                value={value}
+                onChangeText={onChangeText}
+                secureTextEntry={password}
+                placeholderTextColor={'gray'}
+                autoCapitalize={autoCapitalize}
+                keyboardType={keyBoardType}
+                returnKeyType={returnKeyType}
+                onSubmitEditing={onSubmitEditing}
+                ref={fieldRef}
+                blurOnSubmit={false}
+              />
+            </View>
+          </>
+      }
     </View>
-  );
+
+  )
 };
 
 export default InputField;
 
 const styles = StyleSheet.create({
+
   mainContainer: {
-    height: 100,
-    width: '100%',
-    alignSelf:'center'
-    // backgroundColor: colors.appBackground
-  },
-  label: {
-    color: colors.white,
-    // fontWeight: 'bold',
-    marginLeft: 2,
-  },
-  secondaryContainer: {
     alignItems: 'center',
     flexDirection: 'row',
-    marginTop: 10,
-    backgroundColor: colors.white,
-    height: 50,
+    backgroundColor: colors.textInput,
+    height: 52,
     width: '100%',
-    borderRadius: 10,
-    elevation: 3,
-    shadowOpacity: 0.5,
-    shadowColor: '#000',
-    shadowOffset: { width: 2, height: 0 },
+    borderRadius: 11,
   },
-  inputStyle: {
-    color: colors.black,
-    // width: '95%',
-    backgroundColor: 'red',
+  icon: {
+    height: '100%',
+    width: '15%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  rightStyle: {
-    width: 20,
+  passwordIcon: {
+    height: '100%',
+    width: '15%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  input: {
+    color: colors.textSecondary,
+    width: '85%',
+    height: '100%',
+    justifyContent: 'center',
+  },
+  leftIconStyle: {
     height: 20,
-    tintColor: colors.gray,
+    width: 20,
+    resizeMode: 'contain',
+    tintColor: colors.icnoPrimary
+  },
+  rightIconStyle: {
+    height: 22,
+    width: 22,
+    resizeMode: 'contain',
+    tintColor: '#808080'
   },
 });

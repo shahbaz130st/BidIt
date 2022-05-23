@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Splash from '../Screens/Splash/Index'
 import OnBoarding from '../Screens/OnBoarding/Index'
 import AuthStack from './AuthStack';
+import HomeStack from './HomeStack';
 
 
 const Stack = createStackNavigator()
@@ -19,6 +20,10 @@ const MainStack = () => {
                 }}>
                 <Stack.Screen name="Splash" component={Splash} />
                 <Stack.Screen name="OnBoarding" component={OnBoarding} />
+                <Stack.Screen name="AuthStack" component={AuthStack} />
+                <Stack.Screen name="HomeStack" component={HomeStack} />
+
+
 
 
             </Stack.Navigator>

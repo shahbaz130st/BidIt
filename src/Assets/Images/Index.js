@@ -7,6 +7,35 @@ export const Images = {
     Contractor: require('./Contractor.png'),
     OnBoarding: require('./OnBoarding.png'),
     tick: require('./tick.png'),
+    arrow: require('./arrow-back.png'),
+    user: require('./user.png'),
+    location: require('./location.png'),
+    password: require('./password.png'),
+    phone: require('./phone.png'),
+    email: require('./email.png'),
+    hide: require('./hide.png'),
+    show: require('./show.png'),
+    facebook: require('./Facebook.png'),
+    apple: require('./Apple.png'),
+    google: require('./Google.png'),
+    login: require('./login.png'),
+    authentication: require('./authentication.png'),
+    authenticationTwo: require('./authenticationTwo.png'),
+    dash: require('./dash.png'),
+    ForgotPassword: require('./Forgot-password.png'),
+    Resetpassword: require('./Resetpassword.png'),
+    home: require('./home.png'),
+    MyJobs: require('./MyJobs.png'),
+    profile: require('./profile.png'),
+    chat: require('./chat.png'),
+    add: require('./add.png'),
+
+
+
+
+
+
+
 
 
 
