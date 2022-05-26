@@ -24,8 +24,13 @@ const Strings = {
     verify_msg: 'Your account has been successfully verified',
     resetPass: 'Reset Password',
     reset_guide: 'Please enter new password to recover your account.',
-    passChange:'Password Changed',
-    passChangeMsg:'Your password has been succesfully changed!'
+    passChange: 'Password Changed',
+    passChangeMsg: 'Your password has been succesfully changed!',
+    Categories: 'Categories',
+    ViewAll: 'View All',
+    Plumber: 'Plumber',
+    Construction: 'Construction',
+    Electrician: 'Electrician'
 
 }
 

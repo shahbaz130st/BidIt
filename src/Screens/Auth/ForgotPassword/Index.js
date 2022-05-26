@@ -90,13 +90,13 @@ const ForgotPassword = ({ navigation, route }) => {
 
 
                 <AppButton
-                    label={"Continue"}
+                    label={"Confirm"}
                     style={styles.btnStyle}
                     labelStyle={styles.label}
-                    // onPress={() => {
-                    //     navigation.navigate('OTP', { routeName: 'ForgotPassword' })
+                    onPress={() => {
+                        navigation.navigate('OTP', { routeName: 'ForgotPassword' })
 
-                    // }}
+                    }}
                 />
 
             </KeyboardAwareScrollView>

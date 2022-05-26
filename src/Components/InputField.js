@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     height: 20,
     width: 20,
     resizeMode: 'contain',
-    tintColor: colors.icnoPrimary
+    tintColor: colors.iconPrimary
   },
   rightIconStyle: {
     height: 22,

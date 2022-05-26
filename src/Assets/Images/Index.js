@@ -29,6 +29,9 @@ export const Images = {
     profile: require('./profile.png'),
     chat: require('./chat.png'),
     add: require('./add.png'),
+    notification: require('./notification.png'),
+    filter: require('./filter.png'),
+    search: require('./search.png'),
 
 
 

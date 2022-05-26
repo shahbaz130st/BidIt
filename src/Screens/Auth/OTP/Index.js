@@ -116,10 +116,10 @@ const OTP = ({ navigation, route }) => {
                             (
                                 setTimeout(() => {
                                     setLoading(!loading)
-                                }, 1000)
-                                // setTimeout(() => {
-                                //     navigation.navigate('HomeStack')
-                                // }, 1500)
+                                }, 1000),
+                                setTimeout(() => {
+                                    navigation.navigate('HomeStack')
+                                }, 1500)
                             )
 
                     }}

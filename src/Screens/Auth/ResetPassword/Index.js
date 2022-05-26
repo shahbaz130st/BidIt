@@ -132,7 +132,7 @@ const ResetPassword = ({ navigation }) => {
 
 
                 <AppButton
-                    label={"Continue"}
+                    label={"Confirm"}
                     style={styles.btnStyle}
                     labelStyle={styles.label}
                     onPress={() => {
