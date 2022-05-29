@@ -4,13 +4,8 @@ import {
     Text,
     View,
     SafeAreaView,
-    KeyboardAvoidingView,
     TouchableOpacity,
     Keyboard,
-    ScrollView,
-    StyleSheet,
-    ImageBackground,
-    TextInput,
     FlatList
 } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -24,6 +19,8 @@ import Images from '../../../Assets/Images/Index'
 import colors from '../../../Assets/Colors/Index'
 import Strings from '../../../Assets/Strings/Index';
 import SearchInput from '../../../Components/SearchInput'
+import Category from '../../../Components/Category';
+import FilterModal from '../../../Components/FilterModal';
 
 
 
@@ -32,6 +29,9 @@ const Home = ({ navigation, route }) => {
 
     const [search, setSearch] = useState('')
     const [categories, setCategories] = useState()
+    const [filterModal, setFilterModal] = useState(false)
+    const [tab, setTab] = useState(0)
+    const categoryRef = useRef()
 
     const cat = [
         {
@@ -49,13 +49,69 @@ const Home = ({ navigation, route }) => {
 
     ]
 
+    const useKeyboardOpen = () => {
+        const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
+        useEffect(() => {
+            const keyboardOpenListener = Keyboard.addListener("keyboardDidShow", () =>
+                setIsKeyboardOpen(true)
+            );
+            const keyboardCloseListener = Keyboard.addListener("keyboardDidHide", () =>
+                setIsKeyboardOpen(false)
+            );
 
-    const renderItem = ({ item }) => {
+            return () => {
+                if (keyboardOpenListener) keyboardOpenListener.remove();
+                if (keyboardCloseListener) keyboardCloseListener.remove();
+            };
+        }, []);
+        return isKeyboardOpen;
+    };
 
-        <View style={{width: 50, height: 50 }}>
+    const keyboardVisible = useKeyboardOpen();
 
-        </View>
+
+
+    const renderItem = ({ item, index }) => {
+
+        return (
+
+            <TouchableOpacity
+                activeOpacity={0.4}
+                onPress={() => {
+                    setTab(index)
+                    categoryRef.current.scrollToIndex({ animated: true, index: index })
+                }}>
+                <LinearGradient
+                    colors={tab === index ?
+                        ['#B75DF6', colors.gradientOne]
+                        :
+                        [colors.nonActiveBtn, colors.nonActiveBtn]
+                    }
+                    start={{ x: 0, y: 0.8 }}
+                    end={{ x: 0, y: 0 }}
+                    useAngle={true}
+                    angle={75}
+                    angleCenter={{ x: 0.55, y: 0.7 }}
+                    // locations={[0.5, 1]}
+                    style={[styles.categoryItem, { marginLeft: index == 0 ? 0 : 8 }]}>
+                    <Text style={[styles.categoryName, { color: tab != index ? colors.textSecondary : colors.white }]}>{item.name}</Text>
+                </LinearGradient>
+            </TouchableOpacity>
+        )
     }
+
+    const switchCategory = () => {
+        switch (tab) {
+            case 0:
+                return <Category />;
+            case 1:
+                return <Category />;
+            case 2:
+                return <Category />;
+            default:
+                break;
+        }
+    };
 
 
     return (
@@ -85,6 +141,18 @@ const Home = ({ navigation, route }) => {
                         autoCapitalize={'none'}
                         leftIcon={Images.search}
                         rightIcon={Images.filter}
+                        onRightIconPress={() => {
+
+                            if (keyboardVisible) {
+                                Keyboard.dismiss()
+                                setTimeout(() => {
+                                    setFilterModal(true)
+                                }, 250);
+                            } else {
+                                setFilterModal(true)
+                            }
+
+                        }}
                         placeholder={"Search"}
                         returnKeyType={'done'}
                         keyBoardType={'default'}
@@ -95,32 +163,41 @@ const Home = ({ navigation, route }) => {
                     />
                 </View>
 
-
                 <View style={styles.mainContent}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                         <Text style={styles.catText}>{Strings.Categories}</Text>
                         <Text style={styles.viewAllText}>{Strings.ViewAll}</Text>
                     </View>
 
-
-                    <FlatList
-                        data={cat}
-                        keyExtractor={item => item.id}
-                        horizontal={true}
-                        showsHorizontalScrollIndicator={false}
-                        renderItem={renderItem}
-                        contentContainerStyle={{
-                            height: 100,
-                            width: '100%',
-                            paddingHorizontal: 50,
-                        }}
-                    />
+                    <View style={styles.catList}>
+                        <FlatList
+                            ref={categoryRef}
+                            data={cat}
+                            keyExtractor={item => item.id}
+                            horizontal={true}
+                            showsHorizontalScrollIndicator={false}
+                            renderItem={renderItem}
+                            style={{ width: '100%', }}
+                            contentContainerStyle={{
+                            }}
+                        />
+                    </View>
+                    <Text style={styles.date}>{'27 May 2022'}</Text>
+                    <View style={{ width: '100%' }}>
+                        {switchCategory()}
+                    </View>
                 </View>
+
 
 
 
             </LinearGradient>
             {/* </KeyboardAwareScrollView> */}
+            {/* <FilterModal
+                visible={filterModal}
+                onRequestClose={() => setFilterModal(false)}
+                selectedCategory={cat[tab]}
+            /> */}
 
         </SafeAreaView >
 

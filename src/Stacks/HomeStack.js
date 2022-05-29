@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { CurvedBottomBar } from 'react-native-utils-navigation-bar';
-import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, Keyboard, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 
@@ -22,9 +22,27 @@ const Tab = createBottomTabNavigator();
 
 const HomeStack = () => {
 
+    const useKeyboardOpen = () => {
+        const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
+        useEffect(() => {
+            const keyboardOpenListener = Keyboard.addListener("keyboardDidShow", () =>
+                setIsKeyboardOpen(true)
+            );
+            const keyboardCloseListener = Keyboard.addListener("keyboardDidHide", () =>
+                setIsKeyboardOpen(false)
+            );
+
+            return () => {
+                if (keyboardOpenListener) keyboardOpenListener.remove();
+                if (keyboardCloseListener) keyboardCloseListener.remove();
+            };
+        }, []);
+        return isKeyboardOpen;
+    };
+
+    const isKeyboardOpen = useKeyboardOpen();
+
     const CustomTabBarButton = ({ children, onPress }) => (
-
-
         <View
             style={{
                 top: -42.5,
@@ -54,23 +72,18 @@ const HomeStack = () => {
                         colors={[colors.gradientOne, colors.gradientTwo]}
                         start={{ x: 0.9, y: 0 }} end={{ x: 0.4, y: 0.7 }}
                         style={{ width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', borderRadius: 60 }}>
+                        <Image source={Images.add} style={styles.add} resizeMode='contain' />
                     </LinearGradient>
                 </TouchableOpacity>
 
             </LinearGradient>
-
-
-
-
         </View >
     );
 
 
+
+
     return (
-
-
-
-
         <Tab.Navigator
 
             initialRouteName="Home"
@@ -78,76 +91,78 @@ const HomeStack = () => {
             screenOptions={{
                 headerShown: false,
                 tabBarShowLabel: false,
-                tabBarHideOnKeyboard: true,
             }}
             tabBar={(props) => {
                 const { navigation, state } = props
                 return (
-                    <View style={styles.mainTabContainer}>
-                        <View style={{
-                            flexDirection: "row",
-                            marginTop: 10,
-                            height: 80,
-                            width: "100%",
-                            elevation: 5,
-                            backgroundColor: colors.white
-                        }}>
-                            <TouchableOpacity
-                                style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
-                                onPress={() => { navigation.navigate("Home") }}>
-                                <Image source={Images.home}
-                                    resizeMode='contain'
-                                    style={{
-                                        width: 24,
-                                        height: 24,
-                                        tintColor: state.index === 0 ? colors.black : '#CCCCCC'
-                                    }}
-                                />
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
-                                onPress={() => { navigation.navigate("MyJobs") }}>
-                                <Image
-                                    source={Images.MyJobs}
-                                    resizeMode='contain'
-                                    style={{
-                                        width: 24,
-                                        height: 24,
-                                        tintColor: state.index === 1 ? colors.black : '#CCCCCC'
-                                    }}
-                                />
-                            </TouchableOpacity>
-                            <TouchableOpacity style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                                <CustomTabBarButton {...props} />
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                onPress={() => { navigation.navigate("Chat") }}
-                                style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                                <Image
-                                    source={Images.chat}
-                                    resizeMode='contain'
-                                    style={{
-                                        width: 24,
-                                        height: 24,
-                                        tintColor: state.index === 3 ? colors.black : '#CCCCCC'
-                                    }}
-                                />
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                onPress={() => { navigation.navigate("Profile") }}
-                                style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                                <Image
-                                    source={Images.user}
-                                    resizeMode='contain'
-                                    style={{
-                                        width: 24,
-                                        height: 24,
-                                        tintColor: state.index === 4 ? colors.black : '#CCCCCC'
-                                    }}
-                                />
-                            </TouchableOpacity>
+                    !isKeyboardOpen ?
+                        <View style={styles.mainTabContainer}>
+                            <View style={{
+                                flexDirection: "row",
+                                marginTop: 10,
+                                height: 80,
+                                width: "100%",
+                                elevation: 5,
+                                backgroundColor: colors.white
+                            }}>
+                                <TouchableOpacity
+                                    style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+                                    onPress={() => { navigation.navigate("Home") }}>
+                                    <Image source={Images.home}
+                                        resizeMode='contain'
+                                        style={{
+                                            width: 24,
+                                            height: 24,
+                                            tintColor: state.index === 0 ? colors.black : '#CCCCCC'
+                                        }}
+                                    />
+                                </TouchableOpacity>
+                                <TouchableOpacity
+                                    style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+                                    onPress={() => { navigation.navigate("MyJobs") }}>
+                                    <Image
+                                        source={Images.MyJobs}
+                                        resizeMode='contain'
+                                        style={{
+                                            width: 24,
+                                            height: 24,
+                                            tintColor: state.index === 1 ? colors.black : '#CCCCCC'
+                                        }}
+                                    />
+                                </TouchableOpacity>
+                                <TouchableOpacity style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                                    <CustomTabBarButton {...props} />
+                                </TouchableOpacity>
+                                <TouchableOpacity
+                                    onPress={() => { navigation.navigate("Chat") }}
+                                    style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                                    <Image
+                                        source={Images.chat}
+                                        resizeMode='contain'
+                                        style={{
+                                            width: 24,
+                                            height: 24,
+                                            tintColor: state.index === 3 ? colors.black : '#CCCCCC'
+                                        }}
+                                    />
+                                </TouchableOpacity>
+                                <TouchableOpacity
+                                    onPress={() => { navigation.navigate("Profile") }}
+                                    style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                                    <Image
+                                        source={Images.user}
+                                        resizeMode='contain'
+                                        style={{
+                                            width: 24,
+                                            height: 24,
+                                            tintColor: state.index === 4 ? colors.black : '#CCCCCC'
+                                        }}
+                                    />
+                                </TouchableOpacity>
+                            </View>
                         </View>
-                    </View>
+                        :
+                        null
                 )
             }}
 
@@ -196,8 +211,6 @@ const styles = StyleSheet.create({
     shadow: {
         elevation: 8,
         backgroundColor: colors.white,
-        // position: 'absolute',
-        // padding: 10,
         width: '100%',
         height: 85,
         // zIndex: 0,
@@ -205,48 +218,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    btnCircle: {
-        width: 60,
-        height: 60,
-        borderRadius: 30,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'white',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 1,
-        },
-        shadowOpacity: 0.20,
-        shadowRadius: 1.41,
-        elevation: 5,
-        bottom: 28
-    },
-    btnCircleUp: {
-        width: 60,
-        height: 60,
-        borderRadius: 30,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#E8E8E8',
-        bottom: 18,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 1,
-        },
-        shadowOpacity: 0.20,
-        shadowRadius: 1.41,
-        elevation: 1,
-    },
-    imgCircle: {
-        width: 30,
-        height: 30,
-        tintColor: '#48CEF6'
-    },
-    img: {
-        width: 30,
-        height: 30,
+    add: {
+        width: 16,
+        height: 16,
     }
 })
 

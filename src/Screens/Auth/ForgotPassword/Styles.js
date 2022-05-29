@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     scrollView: {
         flexGrow: 1,
         paddingHorizontal: 17,
-        paddingBottom:15
+        paddingBottom: 15
     },
     forgotTitle: {
         color: colors.textPrimary,
@@ -51,18 +51,17 @@ const styles = StyleSheet.create({
         width: 195,
         resizeMode: 'contain',
         alignSelf: 'center',
-        marginTop:40
+        marginTop: 40
     },
     btnStyle: {
         marginTop: 95,
-        backgroundColor: colors.black
     },
     label: {
         fontSize: 17,
         fontFamily: Fonts.Regular,
         color: colors.white
     },
-    
+
 })
 export default styles
 

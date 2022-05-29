@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 15,
         paddingHorizontal: 22,
         paddingVertical: 17,
+        paddingBottom:160,
         backgroundColor: colors.white
     },
     greetings: {
@@ -60,9 +61,37 @@ const styles = StyleSheet.create({
         backgroundColor: colors.textInput
     },
     categoryItem: {
-        height: 36,
-        width: 130
+        height: 38,
+        width: 130,
+        borderRadius: 42,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    catList:
+    {
+        marginTop: 10,
+        height: 45,
+        // backgroundColor:'pink'
+    },
+    outerView: {
+        height: 42,
+        width: 145,
+        backgroundColor: colors.white,
+        borderRadius: 42,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    categoryName: {
+        fontSize: 12,
+        fontFamily: Fonts.Medium,
+        color: colors.white
+
+    },
+    date: {
+        fontSize: 13,
+        fontFamily: Fonts.Medium,
+        color: '#3C3C3C',
+        marginTop:14
     }
 });
-
 export default styles;

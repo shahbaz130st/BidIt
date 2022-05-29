@@ -90,6 +90,7 @@ const ForgotPassword = ({ navigation, route }) => {
 
 
                 <AppButton
+                    gradient={true}
                     label={"Confirm"}
                     style={styles.btnStyle}
                     labelStyle={styles.label}

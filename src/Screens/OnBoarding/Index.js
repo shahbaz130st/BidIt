@@ -28,7 +28,7 @@ const OnBoarding = ({ navigation }) => {
             />
 
             <Text style={styles.projectName}>{Strings.Project}</Text>
-           
+
             <Text style={styles.DummyText}>{Strings.Dummy_One}</Text>
 
 
@@ -77,10 +77,11 @@ const OnBoarding = ({ navigation }) => {
             </View>
 
             <AppButton
+                gradient={true}
                 label={"Next"}
                 labelStyle={styles.label}
                 style={styles.Btn}
-                onPress={()=>navigation.navigate('AuthStack')}
+                onPress={() => navigation.navigate('AuthStack')}
             />
 
             {/* </ImageBackground> */}

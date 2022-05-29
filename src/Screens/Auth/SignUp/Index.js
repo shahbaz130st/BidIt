@@ -165,6 +165,7 @@ const SignUp = ({ navigation }) => {
                 />
 
                 <AppButton
+                    gradient={true}
                     label={"SIGNUP"}
                     style={styles.btnStyle}
                     labelStyle={styles.label}

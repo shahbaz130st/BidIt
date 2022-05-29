@@ -11,6 +11,8 @@ const colors = {
     green: '#01B41F',
     white: "#ffffff",
     black: '#000',
+    nonActiveBtn:'#EDEDED'
+
 
 }
 export default colors;

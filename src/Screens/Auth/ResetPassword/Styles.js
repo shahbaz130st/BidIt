@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
     },
     btnStyle: {
         marginTop: 57,
-        backgroundColor: colors.black
     },
     label: {
         fontSize: 17,

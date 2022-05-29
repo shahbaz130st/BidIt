@@ -106,6 +106,7 @@ const OTP = ({ navigation, route }) => {
                 }
 
                 <AppButton
+                    gradient={true}
                     label={"Continue"}
                     style={styles.btnStyle}
                     labelStyle={styles.label}

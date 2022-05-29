@@ -30,7 +30,16 @@ const Strings = {
     ViewAll: 'View All',
     Plumber: 'Plumber',
     Construction: 'Construction',
-    Electrician: 'Electrician'
+    Electrician: 'Electrician',
+    ViewDetails: "View Details",
+    Filter: 'Filters',
+    Clear: 'Clear Filters',
+    City: 'City',
+    Experience: 'Experience',
+    JobType: 'Job Type',
+    Cancel: 'CANCEL',
+    Apply: 'APPLY'
+
 
 }
 

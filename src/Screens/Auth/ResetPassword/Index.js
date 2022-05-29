@@ -132,6 +132,7 @@ const ResetPassword = ({ navigation }) => {
 
 
                 <AppButton
+                    gradient={true}
                     label={"Confirm"}
                     style={styles.btnStyle}
                     labelStyle={styles.label}
@@ -139,6 +140,12 @@ const ResetPassword = ({ navigation }) => {
                         setTimeout(() => {
                             setLoading(!loading)
                         }, 1000);
+                        setTimeout(() => {
+                            navigation.reset({
+                                index: 0,
+                                routes: [{ name: 'OnBoarding' }],
+                            })
+                        }, 2000);
                     }}
                 />
 

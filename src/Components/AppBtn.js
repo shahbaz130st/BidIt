@@ -8,23 +8,31 @@ import Loader from './Loader'
 
 const AppButton = (props) => {
 
-    const { style, onPress, labelStyle, label } = props
+    const { style, gradient, onPress, labelStyle, label } = props
     return (
 
-        <TouchableOpacity
-            onPress={onPress}
-            activeOpacity={0.4}
-            style={[styles.mainContainer, style]} >
-            <LinearGradient
-                onPress={() => alert('hi')}
-                colors={[colors.gradientOne, colors.gradientTwo]}
-                start={{ x: 0.9, y: 0.1 }} end={{ x: 0, y: 0 }}
-                // useAngle={true}
-                // angle={45}
-                style={{ width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', borderRadius: 10 }}>
+        gradient ?
+            <TouchableOpacity
+                onPress={onPress}
+                activeOpacity={0.4}
+                style={[styles.mainContainer, style]} >
+                <LinearGradient
+                    onPress={() => alert('hi')}
+                    colors={[colors.gradientOne, colors.gradientTwo]}
+                    start={{ x: 0.9, y: 0.1 }} end={{ x: 0, y: 0 }}
+                    // useAngle={true}
+                    // angle={45}
+                    style={{ width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', borderRadius: 10 }}>
+                    <Text style={labelStyle}>{label}</Text>
+                </LinearGradient>
+            </TouchableOpacity>
+            :
+            <TouchableOpacity
+                onPress={onPress}
+                activeOpacity={0.4}
+                style={[styles.mainContainer, style]} >
                 <Text style={labelStyle}>{label}</Text>
-            </LinearGradient>
-        </TouchableOpacity>
+            </TouchableOpacity>
 
 
     )
@@ -40,7 +48,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 10,
         flexDirection: 'row',
-        backgroundColor: colors.gradientOne
     },
     btnText: {
         color: colors.white,

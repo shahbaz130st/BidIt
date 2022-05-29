@@ -22,11 +22,12 @@ const SearchInput = props => {
         onSubmitEditing,
         keyBoardType,
         rightIcon,
-        customStyle
+        customStyle,
+        onRightIconPress
     } = props;
 
     return (
-        <View style={[styles.mainContainer,customStyle]}>
+        <View style={[styles.mainContainer, customStyle]}>
 
             <View style={styles.searchIcon}>
                 <Image source={leftIcon} style={styles.leftIconStyle} />
@@ -48,6 +49,7 @@ const SearchInput = props => {
             </View>
             <View style={styles.filterIcon}>
                 <TouchableOpacity
+                    onPress={onRightIconPress}
                     activeOpacity={0.4}>
                     <Image source={rightIcon} style={styles.rightIconStyle} />
                 </TouchableOpacity>
@@ -69,17 +71,17 @@ const styles = StyleSheet.create({
         height: 43,
         width: '100%',
         borderRadius: 23,
-        paddingHorizontal:15
+        paddingHorizontal: 15
     },
     searchIcon: {
         width: '9%',
-        justifyContent:'center',
-        alignItems:'flex-start',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
     },
     filterIcon: {
         width: '10%',
-        justifyContent:'center',
-        alignItems:'center',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     input: {
         width: '81%',

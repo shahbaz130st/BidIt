@@ -32,6 +32,14 @@ export const Images = {
     notification: require('./notification.png'),
     filter: require('./filter.png'),
     search: require('./search.png'),
+    userOne: require('./userOne.png'),
+    userTwo: require('./userTwo.png'),
+    userThree: require('./userThree.png'),
+    userFour: require('./userFour.png'),
+    Star: require('./Star.png'),
+    rightArrow: require('./rightArrow.png'),
+    experience: require('./experience.png'),
+    type: require('./type.png'),
 
 
 
