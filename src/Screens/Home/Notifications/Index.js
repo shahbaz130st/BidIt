@@ -5,8 +5,7 @@ import {
     View,
     SafeAreaView,
     TouchableOpacity,
-    Keyboard,
-    FlatList
+    FlatList,
 } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import SimpleToast from 'react-native-simple-toast';
@@ -19,52 +18,41 @@ import colors from '../../../Assets/Colors/Index'
 import Strings from '../../../Assets/Strings/Index';
 import Header from '../../../Components/Header';
 import Images from '../../../Assets/Images/Index';
-import ChatListComponent from '../../../Components/ChatListComponent';
+import NotificationComponent from '../../../Components/NotificationComponent';
 
-
-const chatList = [
+const notofications = [
     {
         id: '1',
-        image: Images.userOne,
-        name: 'Jhon Doe',
-        time: '1min ago',
-        lastMsg: '???'
-
+        image: Images.dummyuser,
+        title: 'New Job Proposal Received',
+        desc: 'James sent you a job proposal, please have a look!',
+        time: '3 sec ago'
     },
     {
         id: '2',
-        image: Images.userTwo,
-        name: 'Kevin Spacey',
-        time: '5s ago',
-        lastMsg: 'Hello, how are you?',
-        new: '1'
+        image: Images.dummyuser,
+        title: 'Job Alert',
+        desc: 'Your job alert for xyz!',
+        time: 'Yesterday'
     },
     {
         id: '3',
-        image: Images.userThree,
-        name: 'Leonardo',
-        time: 'Yesterday',
-        lastMsg: 'Hey there!'
-    },
-    {
-        id: '4',
-        image: Images.userFour,
-        name: 'Christian Bale',
-        time: '30/05/2020',
-        lastMsg: 'can I talk to you???'
-    },
-
+        image: Images.dummyuser,
+        title: 'Lorem Ipsum',
+        desc: 'Your job alert for abc!',
+        time: '02/05/2022'
+    }
 ]
 
-const Chat = ({ navigation, route }) => {
 
-    const renderChat = ({ item, index }) => {
+const Notifications = ({ navigation, route }) => {
+
+
+    const renderItem = ({ item }) => {
         return (
-            <ChatListComponent Item={item} />
+            <NotificationComponent Item={item} />
         )
     }
-
-
 
     return (
         <SafeAreaView style={styles.mainContainer}>
@@ -74,17 +62,20 @@ const Chat = ({ navigation, route }) => {
                 style={styles.gradientView}>
 
                 <Header
-                    rightIcon={true}
-                    headerTitle={Strings.MyChats}
+                    leftIcon={Images.arrow}
+                    headerTitle={Strings.Notifications}
+                    onLeftIconPress={() => navigation.goBack()}
                 />
 
                 <View style={styles.mainContent}>
                     <FlatList
-                        data={chatList}
-                        showsVerticalScrollIndicator={false}
+                        data={notofications}
                         keyExtractor={item => item.id}
-                        renderItem={renderChat}
+                        showsVerticalScrollIndicator={false}
+                        renderItem={renderItem}
                         style={{ width: '100%', }}
+                        contentContainerStyle={{
+                        }}
                     />
                 </View>
 
@@ -98,5 +89,5 @@ const Chat = ({ navigation, route }) => {
 }
 
 
-export default Chat
+export default Notifications;
 

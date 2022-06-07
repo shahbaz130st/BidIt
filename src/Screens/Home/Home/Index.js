@@ -21,6 +21,8 @@ import Strings from '../../../Assets/Strings/Index';
 import SearchInput from '../../../Components/SearchInput'
 import Category from '../../../Components/Category';
 import FilterModal from '../../../Components/FilterModal';
+import CityModal from '../../../Components/CityModal';
+import Header from '../../../Components/Header';
 
 
 
@@ -30,6 +32,7 @@ const Home = ({ navigation, route }) => {
     const [search, setSearch] = useState('')
     const [categories, setCategories] = useState()
     const [filterModal, setFilterModal] = useState(false)
+    const [cityModal, setCityModal] = useState(false)
     const [tab, setTab] = useState(0)
     const categoryRef = useRef()
 
@@ -103,15 +106,22 @@ const Home = ({ navigation, route }) => {
     const switchCategory = () => {
         switch (tab) {
             case 0:
-                return <Category />;
+                return <Category listHeaderComponent={listHeader}
+                />;
             case 1:
-                return <Category />;
+                return <Category listHeaderComponent={listHeader} />;
             case 2:
-                return <Category />;
+                return <Category listHeaderComponent={listHeader} />;
             default:
                 break;
         }
     };
+
+    const listHeader = () => {
+        return (
+            <Text style={styles.date}>{'27 May 2022'}</Text>
+        )
+    }
 
 
     return (
@@ -125,12 +135,13 @@ const Home = ({ navigation, route }) => {
                 start={{ x: 0, y: 0.6 }} end={{ x: 1, y: 0.6 }}
                 style={styles.gradientView}>
 
-                <Image source={Images.notification}
-                    resizeMode='contain'
-                    style={styles.notificationIcon} />
+                <Header
+                    rightIcon={true}
+                    rightIconOnPress={() => navigation.navigate('Notifications')}
+                />
 
                 <View style={styles.topView}>
-                    <View style={{ flexDirection: 'row', marginTop: 50 }}>
+                    <View style={{ flexDirection: 'row', marginTop: 10 }}>
                         <Text style={styles.greetings}>{'Hello, '}</Text>
                         <Text style={styles.name}>{'Robert Nicklas'}</Text>
                     </View>
@@ -164,7 +175,7 @@ const Home = ({ navigation, route }) => {
                 </View>
 
                 <View style={styles.mainContent}>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <View style={styles.categoryTitle}>
                         <Text style={styles.catText}>{Strings.Categories}</Text>
                         <Text style={styles.viewAllText}>{Strings.ViewAll}</Text>
                     </View>
@@ -182,7 +193,6 @@ const Home = ({ navigation, route }) => {
                             }}
                         />
                     </View>
-                    <Text style={styles.date}>{'27 May 2022'}</Text>
                     <View style={{ width: '100%' }}>
                         {switchCategory()}
                     </View>
@@ -193,11 +203,18 @@ const Home = ({ navigation, route }) => {
 
             </LinearGradient>
             {/* </KeyboardAwareScrollView> */}
-            {/* <FilterModal
+            <FilterModal
                 visible={filterModal}
                 onRequestClose={() => setFilterModal(false)}
                 selectedCategory={cat[tab]}
-            /> */}
+                selectCity={() => setCityModal(true)}
+            />
+            <View style={{ position: 'absolute' }}>
+                <CityModal
+                    visible={cityModal}
+                    onRequestClose={() => setCityModal(false)}
+                />
+            </View>
 
         </SafeAreaView >
 

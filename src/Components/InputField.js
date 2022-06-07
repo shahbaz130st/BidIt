@@ -20,81 +20,63 @@ const InputField = props => {
     placeholder,
     value,
     onChangeText,
-    isRightIcon,
-    multiLine,
-    textAlignVertical,
     password,
     autoCapitalize,
+    isRightIcon,
     labelStyle,
     keyBoardType,
     returnKeyType,
     onSubmitEditing,
     fieldRef,
-    maxLength,
     customStyle,
-    rightIconOnPress
+    rightIconOnPress,
+    label
   } = props;
 
   return (
     <View style={[styles.mainContainer, customStyle,]}>
 
       {
-        isRightIcon ?
-          <>
-            <View style={styles.icon}>
-              <Image source={leftIcon} style={styles.leftIconStyle} />
-            </View>
-
-            <View style={[styles.input, { width: '70%'}]}>
-              <TextInput
-                style={{ fontSize: 14, fontFamily: Fonts.Light }}
-                placeholder={placeholder}
-                value={value}
-                onChangeText={onChangeText}
-                secureTextEntry={password}
-                placeholderTextColor={'gray'}
-                autoCapitalize={autoCapitalize}
-                keyboardType={keyBoardType}
-                returnKeyType={returnKeyType}
-                onSubmitEditing={onSubmitEditing}
-                ref={fieldRef}
-                blurOnSubmit={false}
-              />
-            </View>
-            <View style={styles.passwordIcon}>
-              <TouchableOpacity
-                onPress={rightIconOnPress}
-                activeOpacity={0.4}
-              >
-                <Image source={rightIcon} style={styles.rightIconStyle} />
-              </TouchableOpacity>
-            </View>
-          </>
-          :
-          <>
-            <View style={styles.icon}>
-              <Image source={leftIcon} style={styles.leftIconStyle} />
-            </View>
-
-            <View style={styles.input}>
-              <TextInput
-                style={{ fontSize: 14, fontFamily: Fonts.Light }}
-                placeholder={placeholder}
-                value={value}
-                onChangeText={onChangeText}
-                secureTextEntry={password}
-                placeholderTextColor={'gray'}
-                autoCapitalize={autoCapitalize}
-                keyboardType={keyBoardType}
-                returnKeyType={returnKeyType}
-                onSubmitEditing={onSubmitEditing}
-                ref={fieldRef}
-                blurOnSubmit={false}
-              />
-            </View>
-          </>
+        leftIcon &&
+        <View style={styles.icon}>
+          <Image source={leftIcon} style={styles.leftIconStyle} />
+        </View>
       }
+      {
+        label &&
+        <Text>{label}</Text>
+      }
+      <View style={[styles.input, { width: (leftIcon && !isRightIcon) ? '88%' : (leftIcon && isRightIcon) ? '76%' : '100%' }]}>
+        <TextInput
+          style={{ fontSize: 14, fontFamily: Fonts.Light }}
+          placeholder={placeholder}
+          value={value}
+          onChangeText={onChangeText}
+          secureTextEntry={password}
+          placeholderTextColor={'gray'}
+          autoCapitalize={autoCapitalize}
+          keyboardType={keyBoardType}
+          returnKeyType={returnKeyType}
+          onSubmitEditing={onSubmitEditing}
+          ref={fieldRef}
+          blurOnSubmit={false}
+        />
+      </View>
+
+      {
+        isRightIcon &&
+        <View style={styles.passwordIcon}>
+          <TouchableOpacity
+            onPress={rightIconOnPress}
+            activeOpacity={0.4}
+          >
+            <Image source={rightIcon} style={styles.rightIconStyle} />
+          </TouchableOpacity>
+        </View>
+      }
+
     </View>
+
 
   )
 };
@@ -104,28 +86,27 @@ export default InputField;
 const styles = StyleSheet.create({
 
   mainContainer: {
-    alignItems: 'center',
     flexDirection: 'row',
     backgroundColor: colors.textInput,
     height: 52,
     width: '100%',
     borderRadius: 11,
+    paddingHorizontal: 8
   },
   icon: {
     height: '100%',
-    width: '15%',
+    width: '12%',
     justifyContent: 'center',
     alignItems: 'center',
   },
   passwordIcon: {
     height: '100%',
-    width: '15%',
+    width: '12%',
     justifyContent: 'center',
     alignItems: 'center',
   },
   input: {
     color: colors.textSecondary,
-    width: '85%',
     height: '100%',
     justifyContent: 'center',
   },

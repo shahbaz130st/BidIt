@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 15,
         paddingHorizontal: 22,
         paddingVertical: 17,
-        paddingBottom:160,
+        paddingBottom: 120,
         backgroundColor: colors.white
     },
     greetings: {
@@ -37,13 +37,6 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontFamily: Fonts.SemiBold,
         color: colors.white
-    },
-    notificationIcon: {
-        height: 21,
-        width: 21,
-        position: 'absolute',
-        right: 23,
-        top: 23
     },
     catText: {
         fontSize: 18,
@@ -59,6 +52,10 @@ const styles = StyleSheet.create({
     categoryView: {
         height: 70,
         backgroundColor: colors.textInput
+    },
+    categoryTitle: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
     categoryItem: {
         height: 38,
@@ -91,7 +88,7 @@ const styles = StyleSheet.create({
         fontSize: 13,
         fontFamily: Fonts.Medium,
         color: '#3C3C3C',
-        marginTop:14
+        marginTop: 14
     }
 });
 export default styles;

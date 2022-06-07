@@ -17,29 +17,30 @@ const dummyData = [
         image: Images.userOne,
         name: 'Jhon Doe',
         rating: '4.3',
-        location: 'Lahore,Punjab Pakistan'
+        location: 'Lahore, Punjab Pakistan'
     },
     {
         id: '2',
         image: Images.userTwo,
         name: 'Kevin Spacey',
         rating: '4.3',
-        location: 'Lahore,Punjab Pakistan'
+        location: 'Lahore, Punjab Pakistan'
     },
     {
         id: '3',
         image: Images.userThree,
         name: 'Leonardo',
         rating: '4.3',
-        location: 'Lahore,Punjab Pakistan'
+        location: 'Lahore, Punjab Pakistan'
     },
     {
         id: '4',
         image: Images.userFour,
         name: 'Christian Bale',
         rating: '4.3',
-        location: 'Lahore,Punjab Pakistan'
-    }
+        location: 'Lahore, Punjab Pakistan'
+    },
+
 ]
 
 const renderCategoryItem = ({ item }) => {
@@ -53,13 +54,16 @@ const renderCategoryItem = ({ item }) => {
 
 const Category = (props) => {
 
+    const { listHeaderComponent } = props
+
     return (
         <FlatList
             data={dummyData}
+            ListHeaderComponent={listHeaderComponent}
             showsVerticalScrollIndicator={false}
             keyExtractor={item => item.id}
             showsHorizontalScrollIndicator={false}
-            renderItem={renderCategoryItem}
+            renderItem={(item) => renderCategoryItem(item)}
             style={{ width: '100%', }}
         />
 

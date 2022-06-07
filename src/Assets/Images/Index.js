@@ -24,6 +24,7 @@ export const Images = {
     dash: require('./dash.png'),
     ForgotPassword: require('./Forgot-password.png'),
     Resetpassword: require('./Resetpassword.png'),
+    ChangePassword: require('./changePassword.png'),
     home: require('./home.png'),
     MyJobs: require('./MyJobs.png'),
     profile: require('./profile.png'),
@@ -40,6 +41,26 @@ export const Images = {
     rightArrow: require('./rightArrow.png'),
     experience: require('./experience.png'),
     type: require('./type.png'),
+    cross: require('./cross.png'),
+    jobDetail: require('./jobDetail.png'),
+    delete: require('./delete.png'),
+    edit: require('./edit.png'),
+    calender: require('./Calender.png'),
+    checked: require('./checked.png'),
+    key: require('./key.png'),
+    bids: require('./bids.png'),
+    language: require('./language.png'),
+    contact: require('./contactUs.png'),
+    terms: require('./terms.png'),
+    policy: require('./policy.png'),
+    logout: require('./logout.png'),
+    menu: require('./menu.png'),
+    jobDesc: require('./jobDesc.png'),
+    privacy: require('./privacy.png'),
+    _terms: require('./_terms.png'),
+    info: require('./info.png'),
+    question: require('./question.png'),
+    dummyuser: require('./profilePlaceholder.png')
 
 
 
@@ -50,7 +71,12 @@ export const Images = {
 
 
 
-    
+
+
+
+
+
+
 
 
 
