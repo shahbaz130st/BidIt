@@ -10,8 +10,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import Home from '../Screens/Home/Home/Index'
 import MyJobs from '../Screens/Home/MyJobs/Index'
 import Chat from '../Screens/Home/Chat/Index'
-import Profile from '../Screens/Home/Profile/Index';
-import ProfileInfo from '../Screens/Home/ProfileInfo/Index'
+import Profile from '../Screens/Home/ProfileInfo/Index';
+// import ProfileInfo from '../Screens/Home/ProfileInfo/Index'
 
 import Images from '../Assets/Images/Index';
 import colors from '../Assets/Colors/Index';
@@ -30,10 +30,12 @@ const ProfileStack = () => {
 }
 
 
-const HomeStack = () => {
+const HomeStack = ({ navigation }) => {
 
 
-    const CustomTabBarButton = ({ children, onPress }) => (
+    const [isPostModalVisible, setIsPostModalVisible] = useState(false)
+
+    const CustomTabBarButton = (props) => (
         <View
             style={{
                 top: -42.5,
@@ -53,6 +55,7 @@ const HomeStack = () => {
                 style={{ width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', borderRadius: 60 }}>
 
                 <TouchableOpacity
+                    onPress={() => props.navigation.navigate('CreatePost')}
                     activeOpacity={0.4}
                     style={{
                         width: 60,
@@ -70,9 +73,6 @@ const HomeStack = () => {
             </LinearGradient>
         </View >
     );
-
-
-
 
     return (
         <Tab.Navigator
@@ -108,6 +108,7 @@ const HomeStack = () => {
                                     }}
                                 />
                             </TouchableOpacity>
+
                             <TouchableOpacity
                                 style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
                                 onPress={() => { navigation.navigate("MyJobs") }}>
@@ -121,9 +122,12 @@ const HomeStack = () => {
                                     }}
                                 />
                             </TouchableOpacity>
-                            <TouchableOpacity style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+
+                            <TouchableOpacity
+                                style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                                 <CustomTabBarButton {...props} />
                             </TouchableOpacity>
+
                             <TouchableOpacity
                                 onPress={() => { navigation.navigate("Chat") }}
                                 style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -133,12 +137,12 @@ const HomeStack = () => {
                                     style={{
                                         width: 24,
                                         height: 24,
-                                        tintColor: state.index === 3 ? colors.black : '#CCCCCC'
+                                        tintColor: state.index === 2 ? colors.black : '#CCCCCC'
                                     }}
                                 />
                             </TouchableOpacity>
                             <TouchableOpacity
-                                onPress={() => { navigation.navigate("ProfileStack") }}
+                                onPress={() => { navigation.navigate("Profile") }}
                                 style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                                 <Image
                                     source={Images.user}
@@ -146,7 +150,7 @@ const HomeStack = () => {
                                     style={{
                                         width: 24,
                                         height: 24,
-                                        tintColor: state.index === 4 ? colors.black : '#CCCCCC'
+                                        tintColor: state.index === 3 ? colors.black : '#CCCCCC'
                                     }}
                                 />
                             </TouchableOpacity>
@@ -164,7 +168,7 @@ const HomeStack = () => {
             <Tab.Screen
                 name="MyJobs"
                 component={MyJobs} />
-            <Tab.Screen
+            {/* <Tab.Screen
                 options={{
                     tabBarLabel: '',
                     tabBarButton: (props) => (
@@ -172,14 +176,14 @@ const HomeStack = () => {
                     )
                 }}
                 name='Post'
-                component={Home}
-            />
+                children={() => <CreatePostModal/>}
+            /> */}
             <Tab.Screen
                 name="Chat"
                 component={Chat} />
             <Tab.Screen
-                name="ProfileStack"
-                component={ProfileStack} />
+                name="Profile"
+                component={Profile} />
 
         </Tab.Navigator>
 

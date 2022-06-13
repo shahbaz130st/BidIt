@@ -29,6 +29,7 @@ export const Images = {
     MyJobs: require('./MyJobs.png'),
     profile: require('./profile.png'),
     chat: require('./chat.png'),
+    bubbleChat: require('./bubbleChat.png'),
     add: require('./add.png'),
     notification: require('./notification.png'),
     filter: require('./filter.png'),
@@ -60,24 +61,21 @@ export const Images = {
     _terms: require('./_terms.png'),
     info: require('./info.png'),
     question: require('./question.png'),
-    dummyuser: require('./profilePlaceholder.png')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    dummyuser: require('./profilePlaceholder.png'),
+    Terms_Of_Use: require('./TermsOfUse.png'),
+    Privacy_Policy: require('./PrivacyPolicy.png'),
+    Amount: require('./Amount.png'),
+    Contact_Us: require('./contact_us.png'),
+    Desc: require('./desc.png'),
+    Gallery: require('./gallery.png'),
+    down: require('./downArrow.png'),
+    confetti: require('./confetti.png'),
+    camera: require('./camera.png'),
+    microphone: require('./microphone.png'),
+    attachment: require('./attachment.png'),
+    send: require('./send.png'),
+    videoCamera: require('./videoCamera.png'),
+    call: require('./call.png')
 
 
 }

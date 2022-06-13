@@ -21,11 +21,10 @@ import Fonts from '../Assets/Fonts/Index'
 
 const ProfileSettingsComponent = (props) => {
 
-    const { leftIcon, Title, rightIcon, iconColor, titleColor } = props
+    const { leftIcon, Title, rightIcon, iconColor, titleColor, onPress } = props
     const [radio, setRadio] = useState(false)
     return (
-        <TouchableOpacity activeOpacity={0.4} style={styles.mainContainer}>
-
+        <TouchableOpacity onPress={onPress} activeOpacity={0.4} style={styles.mainContainer}>
             <View style={{ flexDirection: 'row' }}>
                 <Image source={leftIcon} style={[styles.icon, iconColor]} resizeMode='contain' />
                 <Text style={[styles.title, titleColor]}>{Title}</Text>

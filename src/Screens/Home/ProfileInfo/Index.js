@@ -48,7 +48,9 @@ const ProfileInfo = ({ navigation, route }) => {
                             <Image source={Images.Star} style={styles.star} resizeMode='contain' />
                             <Text style={styles.rating}>{'4.9'}</Text>
                             <Text style={styles.reviews}>{'('}</Text>
-                            <Text style={[styles.reviews, { color: colors.textPrimary, marginLeft: 0, textDecorationLine: 'underline' }]}>{'67 Reviews'}</Text>
+                            <TouchableOpacity activeOpacity={0.4} onPress={() => navigation.navigate('Ratings')}>
+                                <Text style={[styles.reviews, { color: colors.textPrimary, marginLeft: 0, textDecorationLine: 'underline' }]}>{'67 Reviews'}</Text>
+                            </TouchableOpacity>
                             <Text style={[styles.reviews, { marginLeft: 0 }]}>{')'}</Text>
                         </View>
 
@@ -83,11 +85,13 @@ const ProfileInfo = ({ navigation, route }) => {
                         <ProfileSettingsComponent
                             leftIcon={Images.notification}
                             Title={Strings.Notification}
+                            onPress={() => navigation.navigate('Notifications')}
                         />
                         <ProfileSettingsComponent
                             leftIcon={Images.key}
                             rightIcon={Images.rightArrow}
                             Title={Strings.Change_Password}
+                            onPress={() => navigation.navigate('ChangePassword')}
                         />
                         <ProfileSettingsComponent
                             leftIcon={Images.bids}
@@ -103,16 +107,19 @@ const ProfileInfo = ({ navigation, route }) => {
                             leftIcon={Images.contact}
                             rightIcon={Images.rightArrow}
                             Title={Strings.ContactUs}
+                            onPress={() => navigation.navigate('ContactUs')}
                         />
                         <ProfileSettingsComponent
                             leftIcon={Images.terms}
                             rightIcon={Images.rightArrow}
                             Title={Strings.Terms}
+                            onPress={() => navigation.navigate('TermsOfUse')}
                         />
                         <ProfileSettingsComponent
                             leftIcon={Images.policy}
                             rightIcon={Images.rightArrow}
                             Title={Strings.Privacy}
+                            onPress={() => navigation.navigate('PrivacyPolicy')}
                         />
                         <ProfileSettingsComponent
                             leftIcon={Images.logout}

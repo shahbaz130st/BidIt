@@ -64,7 +64,7 @@ const Profile = ({ navigation, route }) => {
                     {/* -------------------------------------------- */}
 
                     <View style={[styles.rowContainer, { marginTop: 12 }]}>
-                        <TouchableOpacity onPress={()=>navigation.navigate('Notifications')} activeOpacity={0.4} style={styles.profileItemContainer}>
+                        <TouchableOpacity onPress={() => navigation.navigate('Notifications')} activeOpacity={0.4} style={styles.profileItemContainer}>
                             <View style={{ height: '60%', justifyContent: 'center', alignItems: 'center' }}>
                                 <View style={styles.iconContainer}>
                                     <Image source={Images.notification} style={styles.icon} resizeMode='contain' />
@@ -101,7 +101,7 @@ const Profile = ({ navigation, route }) => {
                             </View>
                         </TouchableOpacity>
 
-                        <TouchableOpacity activeOpacity={0.4} style={styles.profileItemContainer}>
+                        <TouchableOpacity onPress={() => navigation.navigate('PrivacyPolicy')} activeOpacity={0.4} style={styles.profileItemContainer}>
                             <View style={{ height: '60%', justifyContent: 'center', alignItems: 'center' }}>
                                 <View style={styles.iconContainer}>
                                     <Image source={Images.privacy} style={styles.icon} resizeMode='contain' />
@@ -115,7 +115,7 @@ const Profile = ({ navigation, route }) => {
 
                     {/* -------------------------------------------- */}
 
-                    <TouchableOpacity activeOpacity={0.4} style={[styles.profileItemContainer, { marginTop: 12, alignSelf: 'center' }]}>
+                    <TouchableOpacity onPress={() => navigation.navigate('TermsOfUse')} activeOpacity={0.4} style={[styles.profileItemContainer, { marginTop: 12, alignSelf: 'center' }]}>
                         <View style={{ height: '60%', justifyContent: 'center', alignItems: 'center' }}>
                             <View style={styles.iconContainer}>
                                 <Image source={Images.question} style={styles.icon} resizeMode='contain' />

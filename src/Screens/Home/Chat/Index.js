@@ -60,7 +60,10 @@ const Chat = ({ navigation, route }) => {
 
     const renderChat = ({ item, index }) => {
         return (
-            <ChatListComponent Item={item} />
+            <ChatListComponent
+                Item={item}
+                navigation={navigation}
+            />
         )
     }
 

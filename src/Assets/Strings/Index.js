@@ -72,10 +72,11 @@ const Strings = {
     Notifications: 'Notifications',
     Change_Password: 'Change Password',
     My_Bids: 'My Bids',
+    All_Bids: 'All Bids',
     Language: 'Language',
     Language_Settings: 'Language Settings',
     ContactUs: 'Contact Us',
-    Terms: 'Terms of use',
+    Terms: 'Terms of Use',
     Privacy: 'Privacy Policy',
     Logout: 'Logout',
     Save_Changes: 'Save Changes',
@@ -83,7 +84,19 @@ const Strings = {
     Password: 'Password',
     Delete_Account: 'Delete Account',
     Confirm_Delete: 'Are you sure you want to delete your account?',
-    Confirm: 'Confirm'
+    Confirm: 'Confirm',
+    Accept: 'Accept',
+    Rejected: 'Rejected',
+    Reject: 'Reject',
+    Submit: 'Submit',
+    Rating: 'User Ratings',
+    Reviews: 'Reviews',
+    Create: 'Create',
+    Create_Post: 'Create Post',
+    Create_Post_Desc: 'Please provide following details to create new post.',
+    Post_Created: 'Post Created',
+    Created_Post_Desc: 'Your post has been created successfully!',
+    Accepted_Bid: 'Accepted Bid'
 
 
 

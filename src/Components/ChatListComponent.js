@@ -21,10 +21,10 @@ import Fonts from '../Assets/Fonts/Index'
 
 const ChatListComponent = (props) => {
 
-    const { Item } = props
+    const { Item, navigation } = props
     return (
-        <TouchableOpacity activeOpacity={0.4} style={styles.mainContainer}>
-            <View style={{ width: '16%', justifyContent: 'center'}}>
+        <TouchableOpacity onPress={() => navigation.navigate('ChatScreen')} activeOpacity={0.4} style={styles.mainContainer}>
+            <View style={{ width: '16%', justifyContent: 'center' }}>
                 <Image source={Item.image} style={styles.profileImage} resizeMode='contain' />
             </View>
             <View style={{ width: '84%' }}>
@@ -93,8 +93,8 @@ const styles = StyleSheet.create({
         width: 16,
         borderRadius: 16,
         backgroundColor: colors.iconPrimary,
-        justifyContent:'center',
-        alignItems:'center'
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     new: {
         fontSize: 7,

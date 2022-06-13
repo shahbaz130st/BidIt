@@ -28,14 +28,12 @@ import AppButton from '../../../Components/AppBtn';
 
 
 
-const JobDetails = ({ navigation, route }) => {
+const AcceptedBid = ({ navigation, route }) => {
 
     const Item = route?.params?.ItemDetail
-    const routeName = route?.params?.routeName
 
     useEffect(() => {
         console.log(Item);
-        console.log(routeName);
     }, [])
 
 
@@ -137,20 +135,50 @@ const JobDetails = ({ navigation, route }) => {
                         </View>
 
                     </View>
+                    <View style={styles.detailsView}>
+                        <Text style={styles.title}>{Strings.Accepted_Bid}</Text>
+                        <View style={styles.acceptedBid}>
+                            <TouchableOpacity activeOpacity={0.4} style={styles.innerContainer}>
+                                <View style={{ width: '20%' }}>
+                                    <Image
+                                        style={styles.image}
+                                        source={Images.userFour}
+                                        resizeMode='contain'
+                                    />
+                                </View>
+                                <View style={{ width: '60%', justifyContent: 'center', }}>
+                                    <Text style={styles.nameTwo}>{'Jhon'}</Text>
 
+                                    <View style={styles.ratingViewTwo}>
+                                        <Image source={Images.Star} style={styles.starIcon} resizeMode='contain' />
+                                        <Text style={styles.rating}>{'4.8'}</Text>
+                                    </View>
+                                    <View style={styles.locationViewTwo}>
+                                        <Image source={Images.location} style={styles.locationIcon} resizeMode='contain' />
+                                        <Text style={styles.location}>{'Indus park, california'}</Text>
+                                    </View>
+                                    <View style={styles.amountView}>
+                                        <Image source={Images.Amount} style={styles.locationIcon} resizeMode='contain' />
+                                        <Text style={styles.priceTitle}>{'Requested Amount: '}</Text>
+                                        <Text style={styles.priceTwo}>{'$1800'}</Text>
+                                    </View>
+                                </View>
+                                <View style={{ width: '20%' }}>
+
+                                    <TouchableOpacity activeOpacity={0.4}>
+                                        <Text style={[styles.details, { color: '#676767' }]}>{Strings.ViewDetails}</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
 
                     <View style={styles.btnContainer}>
                         <AppButton
-                            label={Strings.Close}
-                            labelStyle={[styles.btnLabel, { color: colors.textSecondary }]}
-                            style={styles.btnStyle}
-                        />
-                        <AppButton
                             gradient={true}
-                            label={Strings.ViewAllBids}
+                            label={Strings.Close}
                             labelStyle={[styles.btnLabel, { color: colors.white }]}
-                            style={styles.btnStyle}
-                            onPress={() => navigation.navigate('AllBids')}
+                            onPress={() => navigation.goBack()}
                         />
                     </View>
                 </ScrollView>
@@ -164,5 +192,5 @@ const JobDetails = ({ navigation, route }) => {
 }
 
 
-export default JobDetails
+export default AcceptedBid
 

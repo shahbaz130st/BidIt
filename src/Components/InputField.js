@@ -30,7 +30,10 @@ const InputField = props => {
     fieldRef,
     customStyle,
     rightIconOnPress,
-    label
+    label,
+    multiline,
+    rightIconStyle,
+    editable
   } = props;
 
   return (
@@ -38,7 +41,7 @@ const InputField = props => {
 
       {
         leftIcon &&
-        <View style={styles.icon}>
+        <View style={[styles.icon,{justifyContent: multiline ? 'flex-start' : 'center'}]}>
           <Image source={leftIcon} style={styles.leftIconStyle} />
         </View>
       }
@@ -46,7 +49,10 @@ const InputField = props => {
         label &&
         <Text>{label}</Text>
       }
-      <View style={[styles.input, { width: (leftIcon && !isRightIcon) ? '88%' : (leftIcon && isRightIcon) ? '76%' : '100%' }]}>
+      <View style={[styles.input, {
+        width: (leftIcon && !isRightIcon) ? '88%' : (leftIcon && isRightIcon) ? '76%' : '100%',
+        justifyContent: multiline ? 'flex-start' : 'center'
+      }]}>
         <TextInput
           style={{ fontSize: 14, fontFamily: Fonts.Light }}
           placeholder={placeholder}
@@ -58,6 +64,8 @@ const InputField = props => {
           keyboardType={keyBoardType}
           returnKeyType={returnKeyType}
           onSubmitEditing={onSubmitEditing}
+          multiline={multiline}
+          editable={editable}
           ref={fieldRef}
           blurOnSubmit={false}
         />
@@ -70,7 +78,7 @@ const InputField = props => {
             onPress={rightIconOnPress}
             activeOpacity={0.4}
           >
-            <Image source={rightIcon} style={styles.rightIconStyle} />
+            <Image source={rightIcon} style={[styles.rightIconStyle, rightIconStyle]} />
           </TouchableOpacity>
         </View>
       }
@@ -96,7 +104,7 @@ const styles = StyleSheet.create({
   icon: {
     height: '100%',
     width: '12%',
-    justifyContent: 'center',
+    paddingVertical:12,
     alignItems: 'center',
   },
   passwordIcon: {
@@ -108,7 +116,6 @@ const styles = StyleSheet.create({
   input: {
     color: colors.textSecondary,
     height: '100%',
-    justifyContent: 'center',
   },
   leftIconStyle: {
     height: 20,

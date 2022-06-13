@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TouchableOpacity, View, Image, StyleSheet, Dimensions, TextInput } from "react-native";
+import { Text, TouchableOpacity, View, Image, StyleSheet, Dimensions, } from "react-native";
 import Modal from "react-native-modal";
 
 import colors from '../Assets/Colors/Index';
@@ -13,7 +13,15 @@ const deviceWidth = Dimensions.get('window').width
 
 const AlertModal = (props) => {
 
-    const { visible, onRequestClose, onCancelPress, title, desc, twoBtns, positiveBtn, negativeBtn } = props
+    const { visible,
+        onRequestClose,
+        onCancelPress,
+        title,
+        desc,
+        twoBtns,
+        positiveBtn,
+        negativeBtn,
+        image } = props
     return (
         <Modal
             isVisible={visible}
@@ -36,6 +44,11 @@ const AlertModal = (props) => {
                 <View style={{ paddingHorizontal: 20, alignItems: 'center' }}>
                     <Text style={styles.desc}>{desc}</Text>
                 </View>
+
+                {
+                    image &&
+                    <Image source={image} style={styles.alertImage} resizeMode='contain' />
+                }
 
                 {
                     twoBtns ?
@@ -99,31 +112,11 @@ const styles = StyleSheet.create({
         fontFamily: Fonts.Regular,
         color: colors.textSecondary
     },
-    icon: {
-        height: 18,
-        width: 18,
-        top: 3
-    },
-    arrow: {
-        height: 20,
-        width: 20
-    },
-    searchContainer: {
-        marginTop: 15,
-        width: '100%',
-        paddingHorizontal: 35,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-    input: {
-        width: 95,
-        height: 38,
-        borderWidth: 0.8,
-        borderColor: '#CCCCCC',
-        paddingHorizontal: 7,
-        marginTop: 7,
-        borderRadius: 5,
-        justifyContent: 'center'
+    alertImage: {
+        height: 72,
+        width: 72,
+        marginTop: 27,
+        alignSelf:'center'
     },
     btnContainer: {
         flexDirection: 'row',
