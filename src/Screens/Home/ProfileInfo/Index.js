@@ -21,9 +21,11 @@ import Strings from '../../../Assets/Strings/Index';
 import Header from '../../../Components/Header';
 import Images from '../../../Assets/Images/Index';
 import ProfileSettingsComponent from '../../../Components/ProfileSettingsComponent';
-
+import LanguageModal from '../../../Components/LanguageModal';
 
 const ProfileInfo = ({ navigation, route }) => {
+
+    const [isModalVisible, setIsModalVisible] = useState(false)
 
     return (
         <SafeAreaView style={styles.mainContainer}>
@@ -102,6 +104,7 @@ const ProfileInfo = ({ navigation, route }) => {
                             leftIcon={Images.language}
                             rightIcon={Images.rightArrow}
                             Title={Strings.Language_Settings}
+                            onPress={() => setIsModalVisible(true)}
                         />
                         <ProfileSettingsComponent
                             leftIcon={Images.contact}
@@ -132,6 +135,11 @@ const ProfileInfo = ({ navigation, route }) => {
 
             </LinearGradient>
 
+            <LanguageModal
+                visible={isModalVisible}
+                onRequestClose={() => setIsModalVisible(false)}
+                onCancelPress={() => setIsModalVisible(false)}
+            />
 
         </SafeAreaView >
 

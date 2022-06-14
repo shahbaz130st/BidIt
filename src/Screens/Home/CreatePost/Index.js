@@ -14,8 +14,7 @@ import SimpleToast from 'react-native-simple-toast';
 import { useDispatch, useSelector } from 'react-redux'
 import LinearGradient from 'react-native-linear-gradient';
 import { TextInput, Provider, DefaultTheme } from "react-native-paper";
-import DropDownPicker from 'react-native-dropdown-picker';
-
+import { Picker } from '@react-native-picker/picker';
 
 // --------------------------------------------
 import styles from './Styles'
@@ -26,6 +25,7 @@ import Images from '../../../Assets/Images/Index';
 import AppButton from '../../../Components/AppBtn';
 import InputField from '../../../Components/InputField';
 import CreatePostModal from '../../../Components/AlertModal';
+import DropdownPicker from '../../../Components/DropdownPicker';
 
 
 const ChangePassword = ({ navigation, route }) => {
@@ -48,12 +48,40 @@ const ChangePassword = ({ navigation, route }) => {
             value: 'Part Time',
         },
     ]
-
-    // ----------------Refs--------------------
-    const oldPassRef = useRef()
-    const newPassRef = useRef()
-    const confirmNewPassRef = useRef()
-
+    const experienceList = [
+        {
+            label: 'none',
+            value: 'none',
+        },
+        {
+            label: '1 Year',
+            value: '1 Year',
+        },
+        {
+            label: '1+ Year',
+            value: '1+ Year',
+        },
+    ]
+    const startDateList = [
+        {
+            label: '02 Feb, 2020',
+            value: '02 Feb, 2020',
+        },
+        {
+            label: '03 Feb, 2020',
+            value: '03 Feb, 2020',
+        },
+    ]
+    const endDateList = [
+        {
+            label: '05 Feb, 2020',
+            value: '05 Feb, 2020',
+        },
+        {
+            label: '06 Feb, 2020',
+            value: '06 Feb, 2020',
+        },
+    ]
 
     return (
 
@@ -94,29 +122,12 @@ const ChangePassword = ({ navigation, route }) => {
                                 </View>
                             </View>
                         </View>
-                        <View style={{ marginTop: 26 }}>
+                        <View style={{ marginTop: 10 }}>
 
-                            <Picker
-                                placeholder={'Job Category'}
-                                onValueChange={(value) => {
-                                    setJobCategory(value);
-                                }}
-                                selectedValue={jobCategory}>
-                                <Picker.Item style={{ color: 'grey' }} label="Membership Category *" value="default" />
-                                <Picker.Item label="Tulip" value="2" />
-                                <Picker.Item label="Orchid" value="3" />
-                                <Picker.Item label="Dhalia" value="4" />
-                            </Picker>
 
-                            {/* <InputField
-                                onChangeText={val => setJobCategory(val)}
-                                value={jobCategory}
+                            <DropdownPicker
                                 leftIcon={Images.type}
-                                placeholder={"Job Category"}
-                                isRightIcon={true}
-                                rightIcon={Images.down}
-                                editable={false}
-                                rightIconStyle={{ height: 15, width: 15, tintColor: '#BFBFBF' }}
+                                list={jobCategoryList}
                             />
 
                             <InputField
@@ -135,39 +146,19 @@ const ChangePassword = ({ navigation, route }) => {
                                 customStyle={{ marginTop: 16 }}
                             />
 
-                            <InputField
-                                onChangeText={val => setExperience(val)}
-                                value={experience}
+                            <DropdownPicker
                                 leftIcon={Images.experience}
-                                placeholder={"Experience"}
-                                isRightIcon={true}
-                                rightIcon={Images.down}
-                                editable={false}
-                                rightIconStyle={{ height: 15, width: 15, tintColor: '#BFBFBF' }}
-                                customStyle={{ marginTop: 16 }}
-                            />
-                            <InputField
-                                onChangeText={val => setStartDate(val)}
-                                value={startDate}
-                                leftIcon={Images.calender}
-                                placeholder={"Start Date"}
-                                isRightIcon={true}
-                                rightIcon={Images.down}
-                                editable={false}
-                                rightIconStyle={{ height: 15, width: 15, tintColor: '#BFBFBF' }}
-                                customStyle={{ marginTop: 16 }}
+                                list={experienceList}
                             />
 
-                            <InputField
-                                onChangeText={val => setEndDate(val)}
-                                value={endDate}
+                            <DropdownPicker
                                 leftIcon={Images.calender}
-                                placeholder={"End Date"}
-                                isRightIcon={true}
-                                rightIcon={Images.down}
-                                editable={false}
-                                rightIconStyle={{ height: 15, width: 15, tintColor: '#BFBFBF' }}
-                                customStyle={{ marginTop: 16 }}
+                                list={startDateList}
+                            />
+
+                            <DropdownPicker
+                                leftIcon={Images.calender}
+                                list={endDateList}
                             />
 
                             <InputField
@@ -177,7 +168,7 @@ const ChangePassword = ({ navigation, route }) => {
                                 placeholder={"Job Description"}
                                 multiline={true}
                                 customStyle={{ marginTop: 16, height: 160 }}
-                            /> */}
+                            />
                         </View>
 
                         <View style={styles.btnContainer}>
