@@ -50,7 +50,7 @@ const LanguageModal = (props) => {
             useNativeDriver={true}
             useNativeDriverForBackdrop={true}
             backdropColor='rgba(0,0,0,0.8)'
-        >
+        >  
 
 
             <View style={styles.modalContainer}>
