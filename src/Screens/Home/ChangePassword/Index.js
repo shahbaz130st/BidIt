@@ -14,7 +14,7 @@ import SimpleToast from 'react-native-simple-toast';
 import { useDispatch, useSelector } from 'react-redux'
 import LinearGradient from 'react-native-linear-gradient';
 
-// --------------------------------------------
+// --------------------------------------------  
 import styles from './Styles'
 import colors from '../../../Assets/Colors/Index'
 import Strings from '../../../Assets/Strings/Index';

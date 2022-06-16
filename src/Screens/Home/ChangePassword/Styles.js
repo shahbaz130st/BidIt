@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 17,
         backgroundColor: colors.white
     },
-
     mainIcon: {
         height: 230,
         width: 230,
